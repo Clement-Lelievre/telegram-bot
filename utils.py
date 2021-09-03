@@ -12,4 +12,4 @@ def randomize_numbers(update_obj: Update, context: CallbackContext):
     
 def help(update_obj: Update, context: CallbackContext):
     update_obj.message.reply_text("""This bot lets you play a calculation game. To launch the game, you can either use /start, 
-                                  or type one of the following: I wanna play,a game please, game!""")
+    or type one of the following: I wanna play,a game please, game!""")
