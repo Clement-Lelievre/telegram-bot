@@ -95,7 +95,7 @@ def main() -> None:
         },
         fallbacks=[CommandHandler('cancel', cancel)],
         allow_reentry=True,
-        conversation_timeout=15.0
+        conversation_timeout=20.0
         )
 
     # add the handler to the dispatcher
