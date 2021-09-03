@@ -100,6 +100,11 @@ def main() -> None:
 
     # add the handler to the dispatcher
     dispatcher.add_handler(handler)
+    
+    # add the /help endpoint
+    help_handler = CommandHandler('help',help)
+    dispatcher.add_handler(help_handler)
+
     # start polling for updates from Telegram
     updater.start_polling()
     # block until a signal (like one sent by CTRL+C) is sent
