@@ -86,7 +86,7 @@ def main() -> None:
     dispatcher = updater.dispatcher
     # Create our ConversationHandler
     handler = ConversationHandler(
-        entry_points=[CommandHandler('start', start), MessageHandler(Filters.regex('^(I wanna play|a game please)$'), start)],
+        entry_points=[CommandHandler('start', start), MessageHandler(Filters.text(['I wanna play','a game please', 'game!']), start)],
         states={
                 WELCOME: [MessageHandler(Filters.regex(yes_no_regex), welcome)],
                 QUESTION: [MessageHandler(Filters.regex(r'^\d+$'), question)],
