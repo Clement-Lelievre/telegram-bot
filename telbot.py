@@ -14,10 +14,7 @@ load_dotenv()
 API_KEY = os.getenv('API_KEY')
 
 # Our states, as integers
-WELCOME = 0
-QUESTION = 1
-CANCEL = 2
-CORRECT = 3
+WELCOME, QUESTION , CANCEL , CORRECT = range(4)
 
 # The entry function
 def start(update_obj: Update, context: CallbackContext):
@@ -89,7 +86,7 @@ def main() -> None:
     dispatcher = updater.dispatcher
     # Create our ConversationHandler
     handler = ConversationHandler(
-        entry_points=[CommandHandler('start', start), MessageHandler('I want to play', start)],
+        entry_points=[CommandHandler('start', start), MessageHandler(Filters.regex('^(I wanna play|a game please)$'), start)],
         states={
                 WELCOME: [MessageHandler(Filters.regex(yes_no_regex), welcome)],
                 QUESTION: [MessageHandler(Filters.regex(r'^\d+$'), question)],
