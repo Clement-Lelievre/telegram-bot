@@ -87,9 +87,9 @@ def main() -> None:
     updater = Updater(API_KEY)
     # Retrieve the dispatcher, which will be used to add handlers
     dispatcher = updater.dispatcher
-    # Create our ConversationHandler, with only one state
+    # Create our ConversationHandler
     handler = ConversationHandler(
-        entry_points=[CommandHandler('start', start)],
+        entry_points=[CommandHandler('start', start), MessageHandler('I want to play', start)],
         states={
                 WELCOME: [MessageHandler(Filters.regex(yes_no_regex), welcome)],
                 QUESTION: [MessageHandler(Filters.regex(r'^\d+$'), question)],
@@ -97,6 +97,8 @@ def main() -> None:
                 CORRECT: [MessageHandler(Filters.regex(yes_no_regex), correct)],
         },
         fallbacks=[CommandHandler('cancel', cancel)],
+        allow_reentry=True,
+        conversation_timeout=15.0
         )
 
     # add the handler to the dispatcher
