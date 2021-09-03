@@ -69,7 +69,7 @@ def correct(update_obj: Update, context: CallbackContext):
 
 def cancel(update_obj: Update, context: CallbackContext):
     # get the user's first name
-    first_name = update_obj.message.from_user['first_name']
+    first_name = update_obj.effective_user.first_name
     update_obj.message.reply_text(
         f"Okay, no question for you then, take care, {first_name}!", reply_markup= ReplyKeyboardRemove()
     )
@@ -95,7 +95,7 @@ def main() -> None:
         },
         fallbacks=[CommandHandler('cancel', cancel)],
         allow_reentry=True,
-        conversation_timeout=20.0
+        conversation_timeout=20.0 # the user has 20 seconds to reply else bot becomes inactive
         )
 
     # add the handler to the dispatcher
