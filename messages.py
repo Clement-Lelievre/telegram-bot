@@ -1,5 +1,6 @@
 START_MSG = """
-"Hello {}, do you want to <b>answer a question</b>? (Yes/No)"
+"Hello {}, and welcome. Use the command <code>/help</code> to view the available actions.
+Do you want to <b>answer a question</b>? (Yes/No)"
 """
 
 CONGRATS = """
